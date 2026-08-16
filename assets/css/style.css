@@ -100,7 +100,8 @@ a:hover {
   height: 100%;
   display: block;
   object-fit: cover;
-  object-position: center 40%;
+  object-position: center;
+  image-rendering: auto;
 }
 
 .profile-column h1 {
