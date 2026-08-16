@@ -110,17 +110,6 @@
       <div class="section-label">Working Papers<br>(Selected)</div>
       <div class="section-content">
         <article class="paper publication-entry">
-          <h2>Coalitional Obfuscation: Collective Lobbying and Beneficiary Reframing in Export Finance</h2>
-          <p>
-            Why do firms sometimes lobby collectively even when government policy provides benefits to identifiable individual firms? This project examines how the visibility of policy beneficiaries shapes firms’ choice between individual and coalitional political action.
-          </p>
-          <div class="paper-links">
-            <a href="#" aria-label="Abstract link placeholder">Abstract</a>
-            <a href="#" aria-label="Paper link placeholder">Paper</a>
-          </div>
-        </article>
-
-        <article class="paper publication-entry">
           <h2>Global Innovation Networks and Political Heterogeneity: Evidence from Cross-border Co-patents</h2>
           <p class="publication-meta">Ha, Hyunsoo, and Seong Hun Yoo</p>
           <ul class="publication-points">
@@ -128,16 +117,12 @@
             <li>Presented at American Political Science Association (APSA) Annual Meeting 2025</li>
           </ul>
           <div class="paper-links">
-            <a href="#" aria-label="Abstract link placeholder">Abstract</a>
+            <button class="abstract-toggle" type="button" aria-expanded="false" aria-controls="global-innovation-abstract">Abstract</button>
             <a href="#" aria-label="Paper link placeholder">Paper</a>
           </div>
-        </article>
-
-        <article class="paper publication-entry">
-          <h2>Trade Politics, Firms, and International Economic Policy</h2>
-          <p>
-            Additional projects examine firm-level political conflict over trade policy and the domestic political foundations of international economic policymaking.
-          </p>
+          <div class="abstract-panel" id="global-innovation-abstract" hidden>
+            <p>Technological innovation increasingly depends on cross-border collaborations. While much work in international political economy emphasizes institutional similarity as a foundation for deep economic integration, the global network of cross-border joint patent filings points to a puzzle: innovation collaboration often emerges between politically dissimilar countries. We revisit the similarity hypothesis and argue that regime differences can act as drivers—rather than barriers—of cross-border co-patenting through two mechanisms: (1) technological complementarity, where firms bridge democratic advantages in basic research with autocratic capabilities in resource mobilization and commercialization; and (2) strategic risk mitigation, where co-patenting serves as a private governance mechanism to secure property rights in high-risk environments. Using cross-border patent collaboration data from 116 countries between 1977 and 2018, we find robust evidence that cross-border co-patenting is systematically more prevalent between politically heterogeneous country pairs. These findings have important implications for international cooperation in strategic technology, as regime heterogeneity can underpin collaboration through complementarity and risk-sharing arrangements.</p>
+          </div>
         </article>
       </div>
     </section>
@@ -151,6 +136,17 @@
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    const abstractToggle = document.querySelector('.abstract-toggle');
+    const abstractPanel = document.getElementById('global-innovation-abstract');
+
+    if (abstractToggle && abstractPanel) {
+      abstractToggle.addEventListener('click', () => {
+        const willOpen = abstractPanel.hidden;
+        abstractPanel.hidden = !willOpen;
+        abstractToggle.setAttribute('aria-expanded', String(willOpen));
+      });
+    }
 
     (() => {
       const holder = document.getElementById('portraitHolder');
