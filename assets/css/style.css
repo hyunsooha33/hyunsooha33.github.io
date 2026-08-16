@@ -175,9 +175,10 @@ a:hover {
 }
 
 .clean-list li {
-  margin: 0 0 7px;
+  margin: 0 0 32px;
   padding-left: 2px;
   line-height: 1.45;
+  white-space: nowrap;
 }
 
 .clean-list li:last-child {
@@ -339,8 +340,13 @@ a:hover {
     gap: 28px;
   }
 
+  .clean-list li,
   .degree-line {
     white-space: normal;
+  }
+
+  .clean-list li {
+    margin-bottom: 10px;
   }
 
   .section {
