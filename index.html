@@ -120,8 +120,10 @@
             <button class="abstract-toggle" type="button" aria-expanded="false" aria-controls="global-innovation-abstract">Abstract</button>
             <a href="#" aria-label="Paper link placeholder">Paper</a>
           </div>
-          <div class="abstract-panel" id="global-innovation-abstract" hidden>
-            <p>Technological innovation increasingly depends on cross-border collaborations. While much work in international political economy emphasizes institutional similarity as a foundation for deep economic integration, the global network of cross-border joint patent filings points to a puzzle: innovation collaboration often emerges between politically dissimilar countries. We revisit the similarity hypothesis and argue that regime differences can act as drivers—rather than barriers—of cross-border co-patenting through two mechanisms: (1) technological complementarity, where firms bridge democratic advantages in basic research with autocratic capabilities in resource mobilization and commercialization; and (2) strategic risk mitigation, where co-patenting serves as a private governance mechanism to secure property rights in high-risk environments. Using cross-border patent collaboration data from 116 countries between 1977 and 2018, we find robust evidence that cross-border co-patenting is systematically more prevalent between politically heterogeneous country pairs. These findings have important implications for international cooperation in strategic technology, as regime heterogeneity can underpin collaboration through complementarity and risk-sharing arrangements.</p>
+          <div class="abstract-panel" id="global-innovation-abstract" aria-hidden="true">
+            <div class="abstract-panel-inner">
+              <p>Technological innovation increasingly depends on cross-border collaborations. While much work in international political economy emphasizes institutional similarity as a foundation for deep economic integration, the global network of cross-border joint patent filings points to a puzzle: innovation collaboration often emerges between politically dissimilar countries. We revisit the similarity hypothesis and argue that regime differences can act as drivers—rather than barriers—of cross-border co-patenting through two mechanisms: (1) technological complementarity, where firms bridge democratic advantages in basic research with autocratic capabilities in resource mobilization and commercialization; and (2) strategic risk mitigation, where co-patenting serves as a private governance mechanism to secure property rights in high-risk environments. Using cross-border patent collaboration data from 116 countries between 1977 and 2018, we find robust evidence that cross-border co-patenting is systematically more prevalent between politically heterogeneous country pairs. These findings have important implications for international cooperation in strategic technology, as regime heterogeneity can underpin collaboration through complementarity and risk-sharing arrangements.</p>
+            </div>
           </div>
         </article>
       </div>
@@ -142,9 +144,28 @@
 
     if (abstractToggle && abstractPanel) {
       abstractToggle.addEventListener('click', () => {
-        const willOpen = abstractPanel.hidden;
-        abstractPanel.hidden = !willOpen;
-        abstractToggle.setAttribute('aria-expanded', String(willOpen));
+        const isOpen = abstractPanel.classList.contains('is-open');
+
+        if (isOpen) {
+          abstractPanel.style.maxHeight = abstractPanel.scrollHeight + 'px';
+          requestAnimationFrame(() => {
+            abstractPanel.classList.remove('is-open');
+            abstractPanel.style.maxHeight = '0px';
+          });
+          abstractToggle.setAttribute('aria-expanded', 'false');
+          abstractPanel.setAttribute('aria-hidden', 'true');
+        } else {
+          abstractPanel.classList.add('is-open');
+          abstractPanel.style.maxHeight = abstractPanel.scrollHeight + 'px';
+          abstractToggle.setAttribute('aria-expanded', 'true');
+          abstractPanel.setAttribute('aria-hidden', 'false');
+        }
+      });
+
+      abstractPanel.addEventListener('transitionend', (event) => {
+        if (event.propertyName === 'max-height' && abstractPanel.classList.contains('is-open')) {
+          abstractPanel.style.maxHeight = 'none';
+        }
       });
     }
 
