@@ -110,6 +110,46 @@
       <div class="section-label">Working Papers<br>(Selected)</div>
       <div class="section-content">
         <article class="paper publication-entry">
+          <h2>Coalitional Obfuscation: Collective Lobbying and Beneficiary Reframing in Export Finance</h2>
+          <p class="publication-meta">Ha, Hyunsoo</p>
+          <div class="paper-links">
+            <a href="#" aria-label="Abstract link placeholder">Abstract</a>
+            <a href="#" aria-label="Paper link placeholder">Paper</a>
+          </div>
+        </article>
+
+        <article class="paper publication-entry">
+          <h2>The Domestic Politics of Trade Conditionality: Firm-level Foundations of U.S. Interests in International Financial Institutions</h2>
+          <p class="publication-meta">Ha, Hyunsoo</p>
+          <div class="paper-links">
+            <button class="abstract-toggle" type="button" aria-expanded="false" aria-controls="trade-conditionality-abstract">Abstract</button>
+            <a href="#" aria-label="Paper link placeholder">Paper</a>
+          </div>
+          <div class="abstract-panel" id="trade-conditionality-abstract" aria-hidden="true">
+            <div class="abstract-panel-inner">
+              <p>Existing research shows that IMF and World Bank lending often reflects the preferences of powerful creditor states, but it leaves the domestic origins of those preferences less understood. This paper examines U.S. exporters as a source of creditor-state preferences toward trade-related conditionality. I argue that exporters view IMF and World Bank conditionality as an alternative channel for advancing foreign market liberalization. Preferential trade agreements, the conventional tool for trade liberalization, often make exporters’ lobbying politically costly because foreign market-opening gains are tied to reciprocal liberalization at home. Trade conditionality in IMF and World Bank offers a more politically efficient channel by reducing barriers in borrowing countries without triggering the same domestic opposition to U.S. market opening. Using firm-level export and lobbying data, I find that U.S. firms’ export exposure is positively associated with World Bank-related lobbying, but not with IMF related lobbying. Exporters are also more likely to direct World Bank-related lobbying toward the Department of the Treasury, the agency responsible for coordinating U.S. policy toward these institutions. The paper contributes by identifying domestic firm-level foundations of creditor-state interests in international financial institutions.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="paper publication-entry">
+          <h2>Isolated Partners: Foreign Direct Investment among Sanctioned States</h2>
+          <p class="publication-meta">Ha, Hyunsoo, and Joonseok Yang</p>
+          <ul class="publication-points">
+            <li>Presented at Korean Association of International Studies (KAIS) Summer Conference 2026</li>
+          </ul>
+          <div class="paper-links">
+            <button class="abstract-toggle" type="button" aria-expanded="false" aria-controls="isolated-partners-abstract">Abstract</button>
+            <a href="#" aria-label="Paper link placeholder">Paper</a>
+          </div>
+          <div class="abstract-panel" id="isolated-partners-abstract" aria-hidden="true">
+            <div class="abstract-panel-inner">
+              <p>How do economic sanctions reshape firms’ foreign investment incentives? While existing studies have advanced divergent expectations about whether sanctions constitute risks or opportunities for foreign investors, they have shown little interest in identifying the conditions under which such discrepancies arise. This study examines firms’ prior exposure to sanctions in their home countries as an institutional condition influencing foreign investment incentives. We argue that firms originating from sanctioned countries are more likely to view other sanctioned countries as attractive locations for foreign investment. First, firms with prior exposure to sanctions develop organizational routines and adaptive capabilities that lower the marginal costs of operating in similarly constrained environments. Second, sanctions often generate investment vacuums in targeted economies, creating opportunities for early entrants to secure durable market positions. Using project-level FDI data on 195 countries from 2003 to 2023, we present robust evidence that firms from sanctioned countries are more likely to initiate FDI projects in other sanctioned countries, with this tendency observed under US, EU, and multilateral sanctions regimes. This study contributes by advancing our understanding of firm-level FDI incentives and sanctions effectiveness, uncovering an overlooked form of private sanctions-busting.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="paper publication-entry">
           <h2>Global Innovation Networks and Political Heterogeneity: Evidence from Cross-border Co-patents</h2>
           <p class="publication-meta">Ha, Hyunsoo, and Seong Hun Yoo</p>
           <ul class="publication-points">
@@ -140,10 +180,11 @@
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    const abstractToggle = document.querySelector('.abstract-toggle');
-    const abstractPanel = document.getElementById('global-innovation-abstract');
+    document.querySelectorAll('.abstract-toggle').forEach((abstractToggle) => {
+      const panelId = abstractToggle.getAttribute('aria-controls');
+      const abstractPanel = document.getElementById(panelId);
+      if (!abstractPanel) return;
 
-    if (abstractToggle && abstractPanel) {
       abstractToggle.addEventListener('click', () => {
         const isOpen = abstractPanel.classList.contains('is-open');
 
@@ -168,7 +209,7 @@
           abstractPanel.style.maxHeight = 'none';
         }
       });
-    }
+    });
 
     (() => {
       const holder = document.getElementById('portraitHolder');
