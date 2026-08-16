@@ -92,7 +92,7 @@ a:hover {
   margin: 0 auto 28px;
   border-radius: 50%;
   overflow: hidden;
-  background: #f0f1f2;
+  background: #ffffff;
 }
 
 .portrait-placeholder img {
@@ -100,7 +100,7 @@ a:hover {
   height: 100%;
   display: block;
   object-fit: cover;
-  object-position: center;
+  object-position: center top;
   image-rendering: auto;
 }
 
