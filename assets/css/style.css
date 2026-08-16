@@ -288,6 +288,28 @@ a:hover {
   font-size: 14px;
 }
 
+.publication-entry .paper-links {
+  gap: 10px;
+}
+
+.publication-entry .paper-links a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px 11px;
+  border: 1px solid #b9c3cc;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--accent);
+  line-height: 1.3;
+  transition: border-color 0.15s ease, color 0.15s ease;
+}
+
+.publication-entry .paper-links a:hover {
+  text-decoration: none;
+  border-color: var(--accent);
+}
+
 .publication-entry h2 {
   margin-bottom: 9px;
 }
