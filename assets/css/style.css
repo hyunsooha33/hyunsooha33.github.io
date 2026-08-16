@@ -126,8 +126,31 @@ a:hover {
   margin-top: 18px;
   display: flex;
   justify-content: center;
-  gap: 8px;
-  font-size: 14px;
+  align-items: center;
+  gap: 10px;
+}
+
+.profile-icon-link {
+  width: 30px;
+  height: 30px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent);
+  border-radius: 50%;
+  transition: background-color 0.15s ease, transform 0.15s ease;
+}
+
+.profile-icon-link:hover {
+  text-decoration: none;
+  background: rgba(47, 95, 143, 0.08);
+  transform: translateY(-1px);
+}
+
+.profile-icon-link svg {
+  width: 22px;
+  height: 22px;
+  display: block;
 }
 
 .bio-column h2,
