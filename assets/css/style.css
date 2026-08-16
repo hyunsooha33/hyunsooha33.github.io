@@ -195,7 +195,9 @@ a:hover {
 
 .degree-line {
   color: var(--text);
+  font-size: 14px;
   line-height: 1.45;
+  white-space: nowrap;
 }
 
 .school-line {
@@ -325,6 +327,10 @@ a:hover {
   .two-column-info {
     grid-template-columns: 1fr;
     gap: 28px;
+  }
+
+  .degree-line {
+    white-space: normal;
   }
 
   .section {
