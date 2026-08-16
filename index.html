@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Hyunsoo Ha — Political Science, Yonsei University" />
+  <title>Hyunsoo Ha</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="site-name" href="#top">Hyunsoo Ha</a>
+      <nav class="nav" aria-label="Main navigation">
+        <a href="#about">About</a>
+        <a href="#research">Research</a>
+        <a href="#education">Education</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero container" id="about">
+      <div class="profile-column">
+        <div class="portrait-placeholder" aria-label="Portrait placeholder">
+          <span>Photo</span>
+        </div>
+        <h1>Hyunsoo Ha</h1>
+        <p class="role">Political Science</p>
+        <p class="affiliation">Yonsei University</p>
+        <div class="profile-links">
+          <a href="#research">Research</a>
+          <span>·</span>
+          <a href="#" aria-label="CV placeholder">CV</a>
+        </div>
+      </div>
+
+      <div class="bio-column">
+        <h2>About</h2>
+        <p class="lead">
+          I study international political economy, with a particular interest in how firms organize and exercise political influence over international economic policy.
+        </p>
+        <p>
+          My research focuses on trade politics, corporate political activity, and the domestic politics of international economic policy, using quantitative methods and firm- and industry-level data.
+        </p>
+
+        <div class="two-column-info">
+          <div>
+            <h3>Research Interests</h3>
+            <ul class="clean-list">
+              <li>International Political Economy</li>
+              <li>Trade Politics</li>
+              <li>Corporate Political Activity</li>
+              <li>Quantitative Methods</li>
+            </ul>
+          </div>
+          <div>
+            <h3>Current Affiliation</h3>
+            <p>Department of Political Science<br>Yonsei University</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section container" id="research">
+      <div class="section-label">Research</div>
+      <div class="section-content">
+        <article class="paper">
+          <p class="paper-status">Working Paper</p>
+          <h2>Coalitional Obfuscation: Collective Lobbying and Beneficiary Reframing in Export Finance</h2>
+          <p>
+            Why do firms sometimes lobby collectively even when government policy provides benefits to identifiable individual firms? This project examines how the visibility of policy beneficiaries shapes firms’ choice between individual and coalitional political action.
+          </p>
+          <div class="paper-links">
+            <a href="#">Abstract</a>
+            <a href="#">Paper</a>
+          </div>
+        </article>
+
+        <article class="paper">
+          <p class="paper-status">Research in Progress</p>
+          <h2>Trade Politics, Firms, and International Economic Policy</h2>
+          <p>
+            Additional projects examine firm-level political conflict over trade policy and the domestic political foundations of international economic policymaking.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section container" id="education">
+      <div class="section-label">Education</div>
+      <div class="section-content">
+        <div class="education-item">
+          <h2>Yonsei University</h2>
+          <p>Political Science</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© <span id="year"></span> Hyunsoo Ha</p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
