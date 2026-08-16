@@ -161,8 +161,9 @@ a:hover {
 }
 
 .bio-column > h2 {
-  margin: 0 0 20px;
-  font-size: 34px;
+  margin: 0 0 18px;
+  font-size: 22px;
+  line-height: 1.55;
 }
 
 .bio-column p {
@@ -171,9 +172,9 @@ a:hover {
 
 .lead {
   margin-top: 0;
-  font-family: "Source Serif 4", Georgia, serif;
-  font-size: 22px;
-  line-height: 1.55;
+  font-family: inherit;
+  font-size: 16px;
+  line-height: 1.7;
 }
 
 .two-column-info {
@@ -395,11 +396,11 @@ a:hover {
   }
 
   .bio-column > h2 {
-    font-size: 30px;
+    font-size: 20px;
   }
 
   .lead {
-    font-size: 20px;
+    font-size: 16px;
   }
 
   .paper h2 {
