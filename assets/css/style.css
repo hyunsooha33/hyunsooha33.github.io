@@ -170,8 +170,18 @@ a:hover {
 
 .clean-list {
   margin: 0;
-  padding: 0;
-  list-style: none;
+  padding-left: 18px;
+  font-size: 14px;
+}
+
+.clean-list li {
+  margin: 0 0 7px;
+  padding-left: 2px;
+  line-height: 1.45;
+}
+
+.clean-list li:last-child {
+  margin-bottom: 0;
 }
 
 .education-list {
