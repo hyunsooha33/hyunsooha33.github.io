@@ -25,8 +25,9 @@
   <main id="top">
     <section class="hero container" id="about">
       <div class="profile-column">
-        <div class="portrait-placeholder">
-          <img src="assets/img/profile.png" alt="Portrait of Hyunsoo Ha" />
+        <div class="portrait-placeholder" id="portraitHolder">
+          <canvas id="profileCanvas" role="img" aria-label="Portrait of Hyunsoo Ha" style="width:100%;height:100%;display:none;"></canvas>
+          <img id="profileFallback" src="assets/img/profile.png" alt="Portrait of Hyunsoo Ha" />
         </div>
         <h1>Hyunsoo Ha</h1>
         <p class="role">Political Science</p>
@@ -109,6 +110,70 @@
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    (() => {
+      const holder = document.getElementById('portraitHolder');
+      const canvas = document.getElementById('profileCanvas');
+      const fallback = document.getElementById('profileFallback');
+      const source = new Image();
+      let frameId = null;
+
+      function highQualityPortrait() {
+        if (!source.naturalWidth || !holder.offsetWidth) return;
+
+        const cssSize = holder.getBoundingClientRect().width;
+        const dpr = Math.min(window.devicePixelRatio || 1, 4);
+        const targetSize = Math.max(1, Math.round(cssSize * dpr));
+        const cropSize = Math.min(source.naturalWidth, source.naturalHeight);
+
+        // The current portrait composition uses the top square of the source image.
+        let work = document.createElement('canvas');
+        work.width = cropSize;
+        work.height = cropSize;
+        let workCtx = work.getContext('2d');
+        workCtx.imageSmoothingEnabled = true;
+        workCtx.imageSmoothingQuality = 'high';
+        workCtx.drawImage(source, 0, 0, cropSize, cropSize, 0, 0, cropSize, cropSize);
+
+        // Progressive downsampling avoids the fuzzy single-pass resize browsers can
+        // produce when a detailed illustration is reduced from 1086px to ~178px.
+        while (work.width / 2 > targetSize * 1.15) {
+          const next = document.createElement('canvas');
+          next.width = Math.round(work.width / 2);
+          next.height = Math.round(work.height / 2);
+          const nextCtx = next.getContext('2d');
+          nextCtx.imageSmoothingEnabled = true;
+          nextCtx.imageSmoothingQuality = 'high';
+          nextCtx.drawImage(work, 0, 0, work.width, work.height, 0, 0, next.width, next.height);
+          work = next;
+          workCtx = nextCtx;
+        }
+
+        canvas.width = targetSize;
+        canvas.height = targetSize;
+        const ctx = canvas.getContext('2d');
+        ctx.imageSmoothingEnabled = true;
+        ctx.imageSmoothingQuality = 'high';
+        ctx.clearRect(0, 0, targetSize, targetSize);
+        ctx.drawImage(work, 0, 0, work.width, work.height, 0, 0, targetSize, targetSize);
+
+        canvas.style.display = 'block';
+        fallback.style.display = 'none';
+      }
+
+      function scheduleRender() {
+        if (frameId) cancelAnimationFrame(frameId);
+        frameId = requestAnimationFrame(highQualityPortrait);
+      }
+
+      source.onload = highQualityPortrait;
+      source.src = fallback.src;
+      window.addEventListener('resize', scheduleRender, { passive: true });
+
+      if ('ResizeObserver' in window) {
+        new ResizeObserver(scheduleRender).observe(holder);
+      }
+    })();
   </script>
 </body>
 </html>
