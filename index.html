@@ -15,15 +15,16 @@
     <div class="container nav-wrap">
       <a class="site-name" href="#top">Hyunsoo Ha</a>
       <nav class="nav" aria-label="Main navigation">
-        <a href="#about">About</a>
-        <a href="#research">Research</a>
-        <a href="#education">Education</a>
+        <a href="#top">Home</a>
+        <a href="#" aria-label="CV link placeholder">CV</a>
+        <a href="#publication">Publication</a>
+        <a href="#working-papers">Working Papers</a>
       </nav>
     </div>
   </header>
 
   <main id="top">
-    <section class="hero container" id="about">
+    <section class="hero container" id="home">
       <div class="profile-column">
         <div class="portrait-placeholder" id="portraitHolder">
           <canvas id="profileCanvas" role="img" aria-label="Portrait of Hyunsoo Ha" style="width:100%;height:100%;display:none;"></canvas>
@@ -33,9 +34,9 @@
         <p class="role">Political Science</p>
         <p class="affiliation">Yonsei University</p>
         <div class="profile-links">
-          <a href="#research">Research</a>
+          <a href="#working-papers">Working Papers</a>
           <span>·</span>
-          <a href="#" aria-label="CV placeholder">CV</a>
+          <a href="#" aria-label="CV link placeholder">CV</a>
         </div>
       </div>
 
@@ -66,8 +67,13 @@
       </div>
     </section>
 
-    <section class="section container" id="research">
-      <div class="section-label">Research</div>
+    <section class="section container" id="publication">
+      <div class="section-label">Publication</div>
+      <div class="section-content"></div>
+    </section>
+
+    <section class="section container" id="working-papers">
+      <div class="section-label">Working Papers</div>
       <div class="section-content">
         <article class="paper">
           <p class="paper-status">Working Paper</p>
@@ -88,16 +94,6 @@
             Additional projects examine firm-level political conflict over trade policy and the domestic political foundations of international economic policymaking.
           </p>
         </article>
-      </div>
-    </section>
-
-    <section class="section container" id="education">
-      <div class="section-label">Education</div>
-      <div class="section-content">
-        <div class="education-item">
-          <h2>Yonsei University</h2>
-          <p>Political Science</p>
-        </div>
       </div>
     </section>
   </main>
@@ -126,7 +122,6 @@
         const targetSize = Math.max(1, Math.round(cssSize * dpr));
         const cropSize = Math.min(source.naturalWidth, source.naturalHeight);
 
-        // The current portrait composition uses the top square of the source image.
         let work = document.createElement('canvas');
         work.width = cropSize;
         work.height = cropSize;
@@ -135,8 +130,6 @@
         workCtx.imageSmoothingQuality = 'high';
         workCtx.drawImage(source, 0, 0, cropSize, cropSize, 0, 0, cropSize, cropSize);
 
-        // Progressive downsampling avoids the fuzzy single-pass resize browsers can
-        // produce when a detailed illustration is reduced from 1086px to ~178px.
         while (work.width / 2 > targetSize * 1.15) {
           const next = document.createElement('canvas');
           next.width = Math.round(work.width / 2);
